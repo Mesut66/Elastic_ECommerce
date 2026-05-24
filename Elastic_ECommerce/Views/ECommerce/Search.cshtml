@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<form asp-action="Search" method="Get">
+			<form asp-action="Search" method="Get" id="searchForm">
 
 				<div class="mb-3">
 					<label asp-for="SearchVM.CustomerFullName" class="form-label"></label>
@@ -23,15 +23,16 @@
 				</div>
 				<div class="mb-3">
 						<label asp-for="SearchVM.OrderDateStart" class="form-label"></label>
-						<input asp-for="SearchVM.OrderDateStart" class="form-control">
+						<input asp-for="SearchVM.OrderDateStart" class="form-control" type="date">
 				</div>
 				<div class="mb-3">
 						<label asp-for="SearchVM.OrderDateEnd" class="form-label"></label>
-						<input asp-for="SearchVM.OrderDateEnd" class="form-control">
+						<input asp-for="SearchVM.OrderDateEnd" class="form-control" type="date">
 				</div>
 
 				<div class="mb-3">
 					<button class="btn btn-primary" type="submit">Search</button>
+					<button class="btn btn-secondary" type="button" onclick="clearForm()">Clear</button>
 				</div>
 			</form>
 		</div>
@@ -97,3 +98,16 @@
 	</div>
 
 </div>
+
+<script>
+	function clearForm() {
+		const form = document.getElementById('searchForm');
+		form.reset();
+		// Tüm input alanlarını açıkça temizle
+		const inputs = form.querySelectorAll('input[type="text"], input[type="date"]');
+		inputs.forEach(input => input.value = '');
+		// Tüm select alanlarını temizle
+		const selects = form.querySelectorAll('select');
+		selects.forEach(select => select.selectedIndex = 0);
+	}
+</script>
