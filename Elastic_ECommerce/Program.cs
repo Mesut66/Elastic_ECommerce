@@ -1,10 +1,15 @@
 using Elastic_ECommerce.Extensions;
+using Elastic_ECommerce.Repositories;
+using Elastic_ECommerce.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddElastic(builder.Configuration);
+
+builder.Services.AddScoped<ECommerceRepository>();
+builder.Services.AddScoped<ECommerceService>();
 
 var app = builder.Build();
 
