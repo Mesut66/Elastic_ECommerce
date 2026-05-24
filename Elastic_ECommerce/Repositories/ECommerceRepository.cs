@@ -14,7 +14,7 @@ namespace Elastic_ECommerce.Repositories
             _elasticSearchClient = elasticSearchClient;
         }
 
-        private const string IndexName = "data_ecommerce";
+        private const string IndexName = "kibana_sample_data_ecommerce";
 
 
         public async Task<(List<ECommerce> list, long count)> SearchAsync(ECommerceSearchVM searchViewModel, int page, int pageSize)
